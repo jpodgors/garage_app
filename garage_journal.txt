@@ -1,0 +1,14 @@
+12/11/2011	-	Build garage
+	Using rails, created new garage web app, rails new garage
+	
+	A product will contain the following parameters in the db:
+		- Title identify product
+		- Description
+		- Image
+		- list_price initial price 
+		- minimum price, absolutely the lowest accepted price for this product
+		
+		list_price and minimum_price are used by the haggler method which provides the
+		user with the ability to negotiate a price on a product of interest.
+		If list_price and minimum_price are identical, there is no 'wiggle' room left
+		
