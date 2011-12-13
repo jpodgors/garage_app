@@ -6,32 +6,34 @@ class ProductTest < ActiveSupport::TestCase
     assert product.invalid?
     assert product.errors[:title].any?
     assert product.errors[:description].any?
-    assert product.errors[:price].any?
+    assert product.errors[:list_price].any?
+    assert product.errors[:minimum_price].any?
     assert product.errors[:image_url].any?
   end
 
-  test "product price must be positive" do
+  test "product list price must be positive" do
     product = Product.new(title:       "My Book Title",
                           description: "yyy",
                           image_url:   "zzz.jpg")
-    product.price = -1
+    product.list_price = -1
     assert product.invalid?
     assert_equal "must be greater than or equal to 0.01", 
-      product.errors[:price].join('; ')
+      product.errors[:list_price].join('; ')
 
-    product.price = 0
+    product.list_price = 0
     assert product.invalid?
     assert_equal "must be greater than or equal to 0.01", 
-      product.errors[:price].join('; ')
+      product.errors[:list_price].join('; ')
 
-    product.price = 1
+    product.list_price = 1
     assert product.valid?
   end
 
   def new_product(image_url)
     Product.new(title:       "My Book Title",
                 description: "yyy",
-                price:       1,
+                list_price:       1,
+                minimum_price:		1,
                 image_url:   image_url)
   end
 
@@ -52,7 +54,8 @@ class ProductTest < ActiveSupport::TestCase
   test "product is not valid without a unique title" do
     product = Product.new(title:       products(:ruby).title,
                           description: "yyy", 
-                          price:       1, 
+                          list_price:       1, 
+                          minimum_price:		1,
                           image_url:   "fred.gif")
     assert !product.save
     assert_equal "has already been taken", product.errors[:title].join('; ')
@@ -61,17 +64,13 @@ class ProductTest < ActiveSupport::TestCase
   test "product is not valid without a unique title - i18n" do
     product = Product.new(title:       products(:ruby).title,
                           description: "yyy", 
-                          price:       1, 
+                          list_price:       1, 
+                          minimum_price:		1,
                           image_url:   "fred.gif")
 
     assert !product.save
     assert_equal I18n.translate('activerecord.errors.messages.taken'),
                  product.errors[:title].join('; ')
   end
-  
-end
-  
-  
-  
   
 end
