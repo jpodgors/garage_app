@@ -12,3 +12,9 @@
 		user with the ability to negotiate a price on a product of interest.
 		If list_price and minimum_price are identical, there is no 'wiggle' room left
 		
+	Uploaded project to github, first commit...
+	
+	Switched to cucumber and RSpec for testing garage app
+	
+	Created file 'manage_posts.feature' for testing
+	

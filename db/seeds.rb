@@ -8,7 +8,7 @@ Product.create(title: 'Honda 400EX',
 		</p>},
 	image_url: 'cs.jpg',
 	list_price: 36.95,
-	minimum_price: 24;83)
+	minimum_price: 24.83)
 #...
 Product.create(title: 'Programming Ruby 1.9',
   description:
