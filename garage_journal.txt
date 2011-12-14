@@ -18,3 +18,11 @@
 	
 	Created file 'manage_posts.feature' for testing
 	
+	
+12/13/11
+	Pushed latest version to Github
+	
+	Begin chapter 10, typoed on migration, actually had to do
+	a rake:db:migrate:redo
+	
+	
