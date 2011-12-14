@@ -2,35 +2,34 @@
 <!DOCTYPE html>
 <html>
 <head>
-<!-- START_HIGHLIGHT -->
+
   <title>My Online Garage Sale</title>
-<!-- END_HIGHLIGHT -->
   <%= stylesheet_link_tag "application" %><!-- <label id="code.slt"/> -->
   <%= javascript_include_tag "application" %><!-- <label id="code.jlt"/> -->
   <%= csrf_meta_tag %><!-- <label id="code.csrf"/> -->
 </head>
-<!-- END:head -->
+
 <body class="<%= controller.controller_name %>">
-<!-- START_HIGHLIGHT -->
   <div id="banner">
     <%= image_tag("logo.png") %>
     <%= @page_title || "Online Garage Sale" %><!-- <label id="code.depot.e.title"/> -->
   </div>
   <div id="columns">
     <div id="side">
+    	<%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+        <%= render @cart %>
+      <% end %>
+    	
       <ul>
-        <li><a href="http://www....">Home</a></li>
-        <li><a href="http://www..../faq">Questions</a></li>
-        <li><a href="http://www..../news">News</a></li>
-        <li><a href="http://www..../contact">Contact</a></li>
+        <li><a href="http://www.ece.unm.edu">Home</a></li>
+        <li><a href="http://www.ask.com/">Questions</a></li>
+        <li><a href="http://www.slashdot.org">News</a></li>
+        <li><a href="http://www.ece.unm.edu/faculty_Staff/AAA.html">Contact</a></li>
       </ul>
     </div>
     <div id="main">
-<!-- END_HIGHLIGHT -->
-      <%= yield %><!-- <label id="code.depot.e.include"/> -->
-<!-- START_HIGHLIGHT -->
+      <%= yield %>
     </div>
   </div>
-<!-- END_HIGHLIGHT -->
 </body>
 </html>
